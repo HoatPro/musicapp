@@ -50,9 +50,11 @@ class Category extends Component {
       });
   }
   viewPlaylist(href) {
-    console.log(href);
-    //this.context.router.history.push("/category-name");
-  }
+                       var str = href;
+                       console.log(str.slice(45));
+                       //epx:https://api.spotify.com/v1/browse/categories/pop`
+                       //this.context.router.history.push("/category-name");
+                     }
   render() {
     return (
       <Router>
