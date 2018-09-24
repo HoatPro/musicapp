@@ -10,7 +10,6 @@ class Music extends Component {
   }
   async componentDidMount() {
     const { trackId } = this.props.match.params;
-    console.log(trackId);
     await this.showMusics(trackId);
   }
 
@@ -39,7 +38,6 @@ class Music extends Component {
     fetch(BASE_URL, myOptions)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
         this.setState({ tracks: json.tracks });
       });
   }
