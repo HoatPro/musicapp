@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink, Switch } from "react-router-dom";
 import Home from './components/Home';
 import Category from './components/Category';
 import Playlist from './components/Playlist';
@@ -35,20 +35,21 @@ class App extends Component {
             </a>
             <ul className="nav navbar-nav">
               <MenuLink label="Home" to="/" activeOnlyWhenExact={true} />
-              <MenuLink label="Playlist" to="/playlist" activeOnlyWhenExact={true} />
+            <MenuLink label="Playlist" to="/playlists/:categoryId" activeOnlyWhenExact={true} />
               <MenuLink label="Category" to="/categories" activeOnlyWhenExact={true} />
-              <MenuLink label="Tracks" to="/tracks" activeOnlyWhenExact={true} />
-              <MenuLink label="Music" to="/music" activeOnlyWhenExact={true} />
-
+            <MenuLink label="Tracks" to="/tracks/:playlistId" activeOnlyWhenExact={true} />
+              <MenuLink label="Music" to="/track/:trackId" activeOnlyWhenExact={true} />
               <MenuLink label="Search" to="/search" activeOnlyWhenExact={true} />
             </ul>
-          </nav>
+        </nav>
+        <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/playlist" component={Playlist} />
+          <Route path="/playlists/:categoryId" component={Playlist} />
           <Route path="/categories" component={Category} />
-          <Route path="/tracks" component={Tracks} />
-          <Route path="/music" component={Music} />
+          <Route path="/tracks/:playlistId" component={Tracks} />
+          <Route path="/track/:trackId" component={Music} />
           <Route path="/search" component={Search} />
+        </Switch>
         </div>
       </Router>;
 

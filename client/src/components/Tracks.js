@@ -7,28 +7,30 @@ class Tracks extends Component {
     super(props);
     this.state = {
       query: "",
-      artist: null,
+      artist: [],
       tracks: [],
       albums: [],
       categories: [],
       playlists: [],
-      items: []
+      items: [],
+
     }; //IMPORTANT
   }
   async componentDidMount() {
-    await this.showCategory();
+    const { playlistId } = this.props.match.params;
+    await this.showTracks(playlistId);
+
   }
-  showCategory() {
+  showTracks(playlistId) {
     //-----------API SETUP-----------
-    const BASE_URL =
-      "https://api.spotify.com/v1/playlists/37i9dQZF1DX0F4i7Q9pshJ/tracks?";
+    const BASE_URL = `https://api.spotify.com/v1/playlists/${playlistId}/tracks?`;
     let FETCH_URL = BASE_URL + "q=" + this.state.query + "market=ES&limit=50";
 
     /*
           accessToken expires every one hour.
           In order to get accessToken start "web-api-auth-examples"
         */
-    let accessToken = "BQCxox-FnSUrdO5CR8vHQ3ubwdDeR6Cu01H4FEtIr9bkGz-cxGoPQhnJ5856RrGZV7HHwq7fIPF0EMgZw1cHCSWBa9Zs1nHTRwph5-TArdAMGN-h7JtmV0rsU2hdf0tkRdZlzgSyPKw81aDQH7sHOQ5OXHMHDg2kyrwCIOgmUNqxB_c_xwi8o47f2w&refresh_token=AQB_3NEf6etv85DpSO0pIvgU4FUdx_DPDJ5sd-1j7RhBSJkUF3LPJk_ypUV-QgAhRGDdkmoSKjteyIXI-N00qzbkynFlqojjhI954MNzvAfA2uRHUNcoJdv3ke_fU-uroP8Baw";
+    let accessToken = "BQChkR23bMIuDi51hjq9LNdxc6BuBHovQ77jwJz8nVGcOCxb3Ytmk-jnuf-LePClW71gVHnxV0FwTHYII6XhOD1KQOYdFMDHbMveB0QmfHmWSwuhyr58cJwBfrPccRJQ0rV_tC2nI13tp4EsPQfjRqMoJOxsgYZ6PbBQQv4z6nkOQBD7AeP5gayLEg&refresh_token=AQCoTEfMN7ZFncwPEDLgqdfdWJBe2ipRfU0XbnG7fnuerAFrg8d5qPsCQABGh7ODrYzlO4rTk3VK8BIZMfTQ3xxfSarNBt3E3fDsUsTU64isgoBjqVSxoJetBT0WvCNIlVumWQ";
 
     let myOptions = {
       method: "GET",
@@ -44,15 +46,21 @@ class Tracks extends Component {
     fetch(FETCH_URL, myOptions)
       .then(response => response.json())
       .then(json => {
-        console.log(json);
+
         this.setState({
           items: json.items
         });
       });
   }
+ async componentWillReceiveProps(nextProps) {
+   if (nextProps.playlistId !== this.props.playlistId) {
+    await this.showCategory(nextProps.playlistId);
+  }
+}
+
+
   render() {
-    return (
-      <div className="Tracks">
+    return <div className="Tracks">
         <Headers />
         <section className="content">
           <div className="content__left">
@@ -86,11 +94,16 @@ class Tracks extends Component {
                   </thead>
                   <tbody>
                     {this.state.items.map((item, index) => (
-                      <tr key={index}>
+                      <tr
+                        key={index}
+                        onClick={() => {
+                          this.props.history.push(`/track/${item.track.id}`);
+                        }}
+                      >
                         <td>{item.track.album.name}</td>
 
                         <td>{item.track.album.artists[0].name}</td>
-                        <p>{item.track.id}</p>
+                        <td>{item.track.id}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -99,8 +112,7 @@ class Tracks extends Component {
             </div>
           </div>
         </section>
-      </div>
-    );
+      </div>;
   }
 }
 export default Tracks;
