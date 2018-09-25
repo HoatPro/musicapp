@@ -1,0 +1,105 @@
+{
+  "href": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0F4i7Q9pshJ/tracks?offset=0&limit=3&market=ES",
+  "items": [
+    {
+        "added_at": "2018-09-24T02:12:42Z",
+        "added_by": {
+            "external_urls": {
+                "spotify": "https://open.spotify.com/user/"
+            },
+            "href": "https://api.spotify.com/v1/users/",
+            "id": "",
+            "type": "user",
+            "uri": "spotify:user:"
+        },
+        "is_local": false,
+        "primary_color": null,
+        "track": {
+            "album": {
+                "album_type": "single",
+                "artists": [
+                    {
+                        "external_urls": {
+                            "spotify": "https://open.spotify.com/artist/72nLe76yBFSlP6VBzME358"
+                        },
+                        "href": "https://api.spotify.com/v1/artists/72nLe76yBFSlP6VBzME358",
+                        "id": "72nLe76yBFSlP6VBzME358",
+                        "name": "SHAUN",
+                        "type": "artist",
+                        "uri": "spotify:artist:72nLe76yBFSlP6VBzME358"
+                    }
+                ],
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/album/1NgwpxtZFd1x4DbC74V9bO"
+                },
+                "href": "https://api.spotify.com/v1/albums/1NgwpxtZFd1x4DbC74V9bO",
+                "id": "1NgwpxtZFd1x4DbC74V9bO",
+                "images": [
+                    {
+                        "height": 640,
+                        "url": "https://i.scdn.co/image/22cb9934a9fc2b2871770d8ff4636f245b909e80",
+                        "width": 640
+                    },
+                    {
+                        "height": 300,
+                        "url": "https://i.scdn.co/image/4f02cfad5d06b4a9b3e282b1fdd8716ee521b600",
+                        "width": 300
+                    },
+                    {
+                        "height": 64,
+                        "url": "https://i.scdn.co/image/8b36c7f89ac89e2a61ab93e5f964454cc5cf04c3",
+                        "width": 64
+                    }
+                ],
+                "name": "Take",
+                "release_date": "2018-06-27",
+                "release_date_precision": "day",
+                "total_tracks": 4,
+                "type": "album",
+                "uri": "spotify:album:1NgwpxtZFd1x4DbC74V9bO"
+            },
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/72nLe76yBFSlP6VBzME358"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/72nLe76yBFSlP6VBzME358",
+                    "id": "72nLe76yBFSlP6VBzME358",
+                    "name": "SHAUN",
+                    "type": "artist",
+                    "uri": "spotify:artist:72nLe76yBFSlP6VBzME358"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 214136,
+            "episode": false,
+            "explicit": false,
+            "external_ids": {
+                "isrc": "KRF221800012"
+            },
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3NxuezMdSLgt4OwHzBoUhL"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3NxuezMdSLgt4OwHzBoUhL",
+            "id": "3NxuezMdSLgt4OwHzBoUhL",
+            "is_local": false,
+            "is_playable": true,
+            "name": "Way Back Home",
+            "popularity": 70,
+            "preview_url": "https://p.scdn.co/mp3-preview/90960a71753aac7a571900182789d9e4bcad86c8?cid=e25c4d5f74e343de9df9922eaa6997a2",
+            "track": true,
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:3NxuezMdSLgt4OwHzBoUhL"
+        },
+        "video_thumbnail": {
+            "url": null
+        }
+    }
+],
+"limit": 4,
+"next": "https://api.spotify.com/v1/playlists/37i9dQZF1DX0F4i7Q9pshJ/tracks?offset=4&limit=4&market=ES",
+"offset": 0,
+"previous": null,
+"total": 54
+}

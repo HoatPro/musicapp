@@ -12,14 +12,12 @@ class Tracks extends Component {
       albums: [],
       categories: [],
       playlists: [],
-      items: [],
-
+      items: []
     }; //IMPORTANT
   }
   async componentDidMount() {
     const { playlistId } = this.props.match.params;
     await this.showTracks(playlistId);
-
   }
   showTracks(playlistId) {
     //-----------API SETUP-----------
@@ -30,7 +28,8 @@ class Tracks extends Component {
           accessToken expires every one hour.
           In order to get accessToken start "web-api-auth-examples"
         */
-    let accessToken = "BQChkR23bMIuDi51hjq9LNdxc6BuBHovQ77jwJz8nVGcOCxb3Ytmk-jnuf-LePClW71gVHnxV0FwTHYII6XhOD1KQOYdFMDHbMveB0QmfHmWSwuhyr58cJwBfrPccRJQ0rV_tC2nI13tp4EsPQfjRqMoJOxsgYZ6PbBQQv4z6nkOQBD7AeP5gayLEg&refresh_token=AQCoTEfMN7ZFncwPEDLgqdfdWJBe2ipRfU0XbnG7fnuerAFrg8d5qPsCQABGh7ODrYzlO4rTk3VK8BIZMfTQ3xxfSarNBt3E3fDsUsTU64isgoBjqVSxoJetBT0WvCNIlVumWQ";
+    let accessToken =
+      "BQAD_zrLjc0Y9wKEyKshwz9GVM5esNqKnMtWPQtQOJpkxgEBlIYG1d7-cW44yTXJ0sl1PfCEk7ey1QgrGLnIWwkmhdntjXsHW5SLVTTGXstQKZYY2UkcpgNHZCbQDr5ECNA3koPi3R2yBbIwcHIMUrAvBTtILenJX7cebcnM5Xmqf-iGqW3F7Nra4T8";
 
     let myOptions = {
       method: "GET",
@@ -46,21 +45,20 @@ class Tracks extends Component {
     fetch(FETCH_URL, myOptions)
       .then(response => response.json())
       .then(json => {
-
         this.setState({
           items: json.items
         });
       });
   }
- async componentWillReceiveProps(nextProps) {
-   if (nextProps.playlistId !== this.props.playlistId) {
-    await this.showCategory(nextProps.playlistId);
+  async componentWillReceiveProps(nextProps) {
+    if (nextProps.playlistId !== this.props.playlistId) {
+      await this.showCategory(nextProps.playlistId);
+    }
   }
-}
-
 
   render() {
-    return <div className="Tracks">
+    return (
+      <div className="Tracks">
         <Headers />
         <section className="content">
           <div className="content__left">
@@ -87,9 +85,10 @@ class Tracks extends Component {
                 <table className="table table-hover">
                   <thead>
                     <tr>
-                      <td>Tên bài hát</td>
+                      <td>Tên Albums</td>
+                      <td>Bài hát</td>
                       <td>Nghệ sĩ</td>
-                      <td>Tracks ID</td>
+                      <td>Track ID</td>
                     </tr>
                   </thead>
                   <tbody>
@@ -101,7 +100,7 @@ class Tracks extends Component {
                         }}
                       >
                         <td>{item.track.album.name}</td>
-
+                        <td>{item.track.name}</td>
                         <td>{item.track.album.artists[0].name}</td>
                         <td>{item.track.id}</td>
                       </tr>
@@ -112,7 +111,8 @@ class Tracks extends Component {
             </div>
           </div>
         </section>
-      </div>;
+      </div>
+    );
   }
 }
 export default Tracks;
